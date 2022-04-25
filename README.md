@@ -1,24 +1,45 @@
-# README
+# runteq_documents
+■ サービス概要
+3行で
+Runteq内で自分の作成した記事をうまく共有できない悩みを持った人に
+Runteq生が作成した記事を簡単に見つけられる価値を与える
+Runteq生限定の作成記事共有サービスです
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+■メインのターゲットユーザー
+Runteq生
+記事(エラーも含む)を探すことに苦労した経験がある人
+自分のまとめた記事があっているか不安な人
 
-Things you may want to cover:
+■ユーザーが抱える課題
+・Runteq生の記事を探す場合以下のステップが必要になり労力がかかる。
+1.その人のtimesに移動→2.ヘッダーからnotionに移動→3.該当箇所のページを探す(人によってまとめ方はばらばら探すのも一苦労)
 
-* Ruby version
+・自分が書いた記事が正しいか不安な人
+課題などのまとめを行うが正しいのか不安があるor綺麗なまとめ方がわからない
 
-* System dependencies
+■解決方法
+・Runteq生のnotion全てを一括で扱うことによって記事を探しやすくする。
+・記事に対してコメントすることで内容が正しいかを確認する
 
-* Configuration
+■実装予定の機能（以下の例は実際のアプリの機能から一部省略しています）
+・ユーザー
+　　・自分の作成した記事に対するCRUD機能
+　　・投稿された記事に対するコメント機能
+　　・記事を課題ごとに分類できる（入門編・基礎編・応用編・エラー)
+　　・記事に対するステータスを登録できる(内容があっているか確認してほしい、ネタバレ注意)
+　　・記事を検索できる
+　　・記事に対していいねができる
+　　・いいねが多い順で記事を並び替えることができる
+・管理ユーザー
+　　・投稿のCRUD機能
+　　・ユーザーのCRUD機能
 
-* Database creation
+■なぜこのサービスを作りたいのか？
+実際に自分が課題の該当記事などを探すときに苦労するのでその問題を解決したいと思ったからです。
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+■スケジュール
+1. 企画（アイデア企画・技術調査）：4/23〆切
+2. 設計（README作成・画面遷移図作成・ER図作成）：4/24 〆切
+3. 機能実装：4/24~ 4/26 締切
+4. MVPリリース：4/27〆切
+5. 本リリース：4/28
