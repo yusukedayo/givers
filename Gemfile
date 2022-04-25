@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #追加したgem
 gem 'slim-rails'
 gem 'html2slim'
+gem 'pry-byebug'
+gem 'annotate'
