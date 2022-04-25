@@ -60,3 +60,6 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'pry-byebug'
 gem 'annotate'
+gem 'rubocop', require: false
+gem 'better_errors'
+gem 'binding_of_caller'
