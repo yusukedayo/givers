@@ -22,5 +22,5 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :article
-  t.index [:user_id, :article_id], unique: true
+  t.index %i[user_id article_id], unique: true
 end

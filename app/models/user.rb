@@ -35,11 +35,11 @@ class User < ApplicationRecord
   def like(article)
     like_articles << article
   end
-  
+
   def unlike(article)
     like_articles.destroy(article)
   end
-  
+
   def like?(article)
     like_articles.include?(article)
   end

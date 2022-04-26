@@ -57,10 +57,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # 追加したgem
 gem 'annotate'
-gem 'pry-byebug'
 gem 'better_errors'
-gem 'rubocop', require: false
 gem 'binding_of_caller'
 gem 'faker'
+gem 'pry-byebug'
+gem 'rubocop', require: false
 gem 'sorcery'
-
