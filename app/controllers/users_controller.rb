@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path
+      redirect_to login_path, success: "ユーザーの新規作成に成功しました"
     else
-      render :new
+      render :new, danger: "ユーザーの作成に失敗しました"
     end
   end
 
