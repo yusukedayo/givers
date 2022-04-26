@@ -22,7 +22,8 @@
 class Article < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
-
+  has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
   validates :url, :status, presence: true
   enum status: { everytime: 0, after_study: 1, before_study: 2 }
 end
