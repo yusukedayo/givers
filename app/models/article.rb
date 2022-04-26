@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  body       :text
-#  status     :integer          default(0), not null
+#  status     :integer          default("everytime"), not null
 #  title      :string
 #  url        :text             not null
 #  created_at :datetime         not null
@@ -20,7 +20,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Article < ApplicationRecord
-    belongs_to :user
-    validates :url, :status, presence: true
-    enum status: {everytime: 0, after_study: 1, before_study: 2}
+  belongs_to :user
+  has_many :comments, dependent: :destroy
+
+  validates :url, :status, presence: true
+  enum status: { everytime: 0, after_study: 1, before_study: 2 }
 end
