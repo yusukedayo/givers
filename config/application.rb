@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -20,13 +20,13 @@ module Givers
     # config.eager_load_paths << Rails.root.join("extras")
     config.generators do |g|
       g.assets false
-			# assetsファイルを作成する機能をfalse
+      # assetsファイルを作成する機能をfalse
       g.test_framework false
-			# test_frameworkファイルを作成する機能をfalse
+      # test_frameworkファイルを作成する機能をfalse
       g.helper false
-			# helperファイルを作成する機能をfalse
+      # helperファイルを作成する機能をfalse
       g.skip_routes true
-      #routesの自動生成をスキップ
+      # routesの自動生成をスキップ
     end
   end
 end
