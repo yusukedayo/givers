@@ -1,0 +1,5 @@
+<% if current_user.like?(article) %>
+  <%= render 'unlike', { article: article } %>
+<% else %>
+  <%= render 'like', { article: article } %>
+<% end %>
