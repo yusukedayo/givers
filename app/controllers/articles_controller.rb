@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   def edit; end
   
   def update
-    if @article.update!(article_params)
+    if @article.update(article_params)
       redirect_to article_path(@article), success: '投稿を更新しました'
     else
       flash.now[:danger] = '失敗しました'
@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
     if @article.save
       redirect_to articles_path, success: '投稿しました'
     else
@@ -43,7 +43,7 @@ private
     params.require(:article).permit(:title, :url, :body, :status)
   end
 
-  def set_articles
+  def set_article
     @article = current_user.articles.find(params[:id])
   end
 end

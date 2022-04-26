@@ -20,5 +20,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Article < ApplicationRecord
-    belong_to :user
+    belongs_to :user
+    validates :url, :status, presence: true
 end
