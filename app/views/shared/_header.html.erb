@@ -1,25 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">Givers</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+    <div class="text-right" id="navbarSupportedContent">
+      <ul class="navbar-nav text-end ">
+        <li class="nav-item ">
+          <%= link_to '新規登録', '#', class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-        </li>
-        <li class="nav-item dropdown">
-        </li>
-        <li class="nav-item">
+        <li class="nav-item px-4">
+          <div class="flex-shrink-0 dropdown ">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+              <li><a class="dropdown-item" href="#">プロフィール</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li> <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
+            </ul>
+          </div>
         </li>
       </ul>
-      <div class="d-flex">
-        <a href="#" class="d-block link-dark text-decoration-none " id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-        </a>
-      </div>
     </div>
   </div>
 </nav>
