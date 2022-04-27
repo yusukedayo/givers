@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   before_action :set_article, only: %i[edit update destroy]
   def index
-    @articles = Article.all.includes(:user).order(created_at: :desc)
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc)
     if params[:tag_name]
       @articles = Article.tagged_with("#{params[:tag_name]}")
     end
