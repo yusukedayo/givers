@@ -45,6 +45,12 @@ class ArticlesController < ApplicationController
     redirect_to articles_url, success: '質問を削除しました'
   end
 
+  def likes
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+    @like_articles = current_user.like_articles.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def article_params

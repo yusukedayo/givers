@@ -15,4 +15,15 @@
       </table>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @own_articles.present? %>
+          <%= render partial: 'own_article', collection: @own_articles %>
+        <% else %>
+          <p>投稿はありません</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
