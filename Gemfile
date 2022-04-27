@@ -65,3 +65,4 @@ gem 'rubocop', require: false
 gem 'sorcery'
 gem 'acts-as-taggable-on', '~> 9.0'
 gem 'ransack'
+gem 'carrierwave'
