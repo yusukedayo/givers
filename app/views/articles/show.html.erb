@@ -14,6 +14,9 @@
                 <%= render 'like_area', article: @article  %>
               <% end %>
             </div>
+            <li class="list-inline-item">
+              <%= render 'tag_list', tag_list: @article.tag_list %>
+            </li>
           </div>
           <p><%= simple_format(@article.body) %></p>
         </div>

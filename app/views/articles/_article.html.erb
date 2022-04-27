@@ -15,7 +15,7 @@
             <%= article.created_at %>
           </li>
           <li class="list-inline-item">
-            <%= render 'articles/tag_list', tag_list: article.tag_list %>
+            <%= render 'tag_list', tag_list: article.tag_list %>
           </li>
         </ul>
         <p class="card-text"><%= article.body %></p>
