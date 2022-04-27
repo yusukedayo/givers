@@ -3,6 +3,9 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[edit update destroy]
   def index
     @articles = Article.all.includes(:user).order(created_at: :desc)
+    if params[:tag_name]
+      @articles = Article.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def show
