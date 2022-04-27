@@ -9,10 +9,10 @@
             <div class='col-md-9'>
               <h3 class="d-inline"><%= @article.title %></h3>
               <%= render 'crud_menus', article: @article %>
-              <% if current_user.own?(article) %>
-                <%= render 'crud_menus', article: article %>
+              <% if current_user.own?(@article) %>
+                <%= render 'crud_menus', article: @article %>
               <% else %>
-                <%= render 'like_area', article: article  %>
+                <%= render 'like_area', article: @article  %>
               <% end %>
             </div>
           </div>

@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @comments = @article.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
+    @likes_count = Like.where(article_id: @article.id).count
   end
 
   def new
