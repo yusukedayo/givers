@@ -20,6 +20,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Article < ApplicationRecord
+  acts_as_taggable
+
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
