@@ -7,6 +7,8 @@
         <div class="card-body">
           <div class='row'>
             <div class='col-md-9'>
+              <%= image_tag @article.user.avatar.url , class:"rounded-circle", alt:"mdo", width:"32", height:"32"%>
+              <%= @article.user.user_name%><br>
               <h3 class="d-inline"><%= @article.title %></h3>
               <% if current_user.own?(@article) %>
                 <%= render 'crud_menus', article: @article %>

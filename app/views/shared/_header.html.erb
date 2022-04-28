@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="#">Givers</a>
+    <%= link_to 'Givers', root_path, class: "navbar-brand"%>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,15 +9,18 @@
         <li class="nav-item ">
           <%= link_to '新規登録', new_article_path, class: 'nav-link' %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'いいね一覧', likes_articles_path, class: 'nav-link' %>
+        </li>
         <li class="nav-item px-4">
           <div class="flex-shrink-0 dropdown ">
-            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-            </a>
+            <div class="d-block link-dark text-decoration-none dropdown-toggle " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag current_user.avatar.url, class:"rounded-circle", alt:"mdo", width:"32", height:"32"%>
+            </div>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-              <li><a class="dropdown-item" href="#">プロフィール</a></li>
+              <li><%= link_to 'プロフィール', profile_path, class: 'dropdown-item' %></li>
               <li><hr class="dropdown-divider"></li>
-              <li> <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
+              <li><%= link_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %></li>
             </ul>
           </div>
         </li>

@@ -3,6 +3,8 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">
+          <%= image_tag article.user.avatar.url , class:"rounded-circle", alt:"mdo", width:"32", height:"32"%>
+          <%= article.user.user_name%><br>
           <%= link_to article.title, article_path(article) %>
           <% if current_user.own?(article) %>
             <%= render 'crud_menus', article: article %>

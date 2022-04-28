@@ -1,0 +1,32 @@
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h1 class="float-left mb-5">プロフィール編集</h1>
+      <%= link_to '編集', edit_profile_path, class: 'btn btn-success float-right' %>
+      <table class="table">
+        <tr>
+          <%= image_tag current_user.avatar.url, class:"rounded-circle", alt:"mdo", width:"60", height:"60" %>
+        </tr>
+        <tr>
+          <th scope="row">メールアドレス</th>
+          <td><%= current_user.email %></td>
+        </tr>
+        <tr>
+          <th scope="row">ユーザー名</th>
+          <td><%= current_user.user_name %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @own_articles.present? %>
+          <%= render partial: 'own_article', collection: @own_articles %>
+        <% else %>
+          <p>投稿はありません</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
