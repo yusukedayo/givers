@@ -66,3 +66,9 @@ gem 'sorcery'
 gem 'acts-as-taggable-on', '~> 9.0'
 gem 'ransack'
 gem 'carrierwave'
+
+gem 'net-smtp'
+# ついでに以下の2つも追加しておく方が良さそう
+gem 'net-imap'
+gem 'net-pop'
+gem 'rails_12factor', group: :production
