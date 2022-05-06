@@ -2,44 +2,48 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <!-- 検索フォーム -->
-          <%= search_form_for @q, url: articles_path do |f| %>
-            <div class="input-group mb-3">
-              <%= f.search_field :title_or_body_cont, class: 'form-control',placeholder:"キーワードを入力" %>
-              <div class="btn btn-outline-success" >
-                <%= button_tag type: 'submit', class: 'btn btn-default' do %>
-                  <i class="fas fa-search"></i>検索
-                <% end %>
-              </div>
+        <%= search_form_for @q, url: articles_path do |f| %>
+          <div class="input-group mb-3">
+            <%= f.search_field :title_or_body_cont, class: 'form-control',placeholder:"キーワードを入力" %>
+            <div class="btn btn-outline-success" >
+              <%= button_tag type: 'submit', class: 'btn btn-default' do %>
+                <i class="fas fa-search"></i>検索
+              <% end %>
             </div>
-          <% end %>
-          <h2 class="header-tag mb-3 bg-primary text-white col-2 text-center">入門STEP</h2>
-        </div>
-        
-  </div>
+          </div>
+        <% end %>
+      <h2 class="header-tag mb-3 bg-primary text-white col-2 text-center">全て</h2>
+    </div>
 
-  <!-- 掲示板一覧 -->
-  
-  <div class="row">
-    <div class="col-12 center-block">
-      <div class="row ">
-        <% if @articles.present? %>
-          <%= render @articles %>
+    <% if @articles.present? %>
+      <%= render @articles %>
+    <% else %>
+      <p>投稿はありません</p>
+    <% end %>
+    <div class="col-lg-10 offset-lg-1">
+    <h2 class="header-tag mb-3 bg-primary text-white col-2 text-center">入門STEP</h2>
+    </div>
+    <% if @introduction_articles.present? %>
+      <%= render @introduction_articles %>
         <% else %>
           <p>投稿はありません</p>
         <% end %>
-    </div>
-    </div>
-  </div>
-
-  <div class="col-lg-10 offset-lg-1">
+    <div class="col-lg-10 offset-lg-1">
     <h2 class="header-tag mb-3 bg-primary text-white col-2 text-center">基礎STEP</h2>
+    </div>
+    <% if @basis_articles.present? %>
+      <%= render @basis_articles %>
+    <% else %>
+      <p>投稿はありません</p>
+    <% end %>
+    <div class="col-lg-10 offset-lg-1">
+    <h2 class="header-tag mb-3 bg-primary text-white col-2 text-center">応用</h2>
+    </div>
+    <% if @advance_articles.present? %>
+      <%= render @advance_articles %>
+    <% else %>
+      <p>投稿はありません</p>
+    <% end %>
   </div>
 
-  <div class="col-lg-10 offset-lg-1">
-    <h2 class="header-tag mb-3 bg-primary text-white col-2 text-center">応用STEP</h2>
-  </div>
 
-  <div class="col-lg-10 offset-lg-1">
-    <h2 class="header-tag mb-3 bg-primary text-white col-2 text-center">その他</h2>
-  </div>
-</div>
