@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create edit destroy update]
     collection do
       get :likes
+      get :search
     end
   end
   resources :likes, only: %i[create destroy]

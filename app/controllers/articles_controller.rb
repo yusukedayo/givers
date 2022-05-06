@@ -2,7 +2,6 @@ class ArticlesController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   before_action :set_article, only: %i[edit update destroy]
   def index
-
     @q = Article.ransack(params[:q])
     @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc).limit(3)
     @introduction_articles = Article.tagged_with(["入門編", "入門"], :any => true).includes(:user).limit(3).order(created_at: :desc)
@@ -11,6 +10,11 @@ class ArticlesController < ApplicationController
     if params[:tag_name]
       @articles = Article.tagged_with("#{params[:tag_name]}")
     end
+  end
+
+  def search
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc)
   end
 
   def show
