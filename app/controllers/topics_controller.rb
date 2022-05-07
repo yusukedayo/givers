@@ -15,5 +15,8 @@ class TopicsController < ApplicationController
     @advance_articles = Article.tagged_with(["応用編", "応用"], :any => true).includes(:user).order(created_at: :desc)
   end
 
+  def advance
+    @advance_articles = Article.tagged_with(["応用編", "応用"], :any => true).includes(:user).order(created_at: :desc)
+  end
 
 end
