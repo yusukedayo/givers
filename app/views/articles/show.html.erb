@@ -12,11 +12,20 @@
                 <%= @article.user.user_name%>
               </div>
               <div class="ms-auto align-items-end">
-                <% if current_user.own?(@article) %>
-                 <%= render 'crud_menus', article: @article %>
-                <% else %>
-                  <%= render 'like_area', article: @article  %>
-                <% end %>
+                <div class="d-flex flex-row bd-highlight">
+                  <div class=" mx-2 d-flex align-items-end bd-highlight">
+                    <%= link_to @article.url, target: :_blank do %>
+                      <i class="fas fa-link"></i>記事に移動
+                    <% end %>
+                  </div>
+                  <div class=" bd-highlight">
+                    <% if current_user.own?(@article) %>
+                     <%= render 'crud_menus', article: @article %>
+                    <% else %>
+                      <%= render 'like_area', article: @article  %>
+                    <% end %>
+                  </div>
+                </div>
               </div>
             </div>
               <h3 class="d-inline"><%= @article.title %></h3>
