@@ -3,13 +3,13 @@
 
   <!-- 掲示板一覧 -->
   <div class="d-flex align-items-end" >
-    <div class="w-25 "><h4 class="fw-bolder">全て</h4></div>
+    <div class="w-25"><h4 class="fw-bolder">すべて</h4></div>
     <div class="ms-auto align-items-end">
      <h6 class="mb-0"><%= link_to 'もっと見る', topics_path, class: 'nav-link' %></h6>
     </div>
   </div>
   
-  <div class="row">
+  <div class="row pt-3">
     <div class="col-12">
       <div class="row">
         <% if @articles.present? %>

@@ -19,12 +19,12 @@
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
           <%= link_to edit_article_comment_path(comment.article, comment), id: "button-edit-#{comment.id}" do %>
-            <i class="fa-solid fa-pen-to-square"></i>
+            <i class="far fa-edit"></i>
           <% end %>
         </li>
         <li class="list-inline-item">
           <%= link_to article_comment_path(comment.article, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, id: "button-delete-#{comment.id}" do %>
-            <i class="fa-solid fa-trash-can"></i>
+            <i class="far fa-trash-alt"></i>
           <% end %>
         </li>
       </ul>
