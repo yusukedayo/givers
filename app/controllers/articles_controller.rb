@@ -2,8 +2,7 @@ class ArticlesController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   before_action :set_article, only: %i[edit update destroy]
   def index
-    @q = Article.ransack(params[:q])
-    @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc).limit(4)
+    @articles = Article.all.includes(:user).order(created_at: :desc).limit(4)
     @introduction_articles = Article.tagged_with(["入門編", "入門"], :any => true).includes(:user).limit(4).order(created_at: :desc)
     @basis_articles = Article.tagged_with(["基礎編", "基礎"], :any => true).includes(:user).limit(4).order(created_at: :desc)
     @advance_articles = Article.tagged_with(["応用編", "応用"], :any => true).includes(:user).limit(4).order(created_at: :desc)

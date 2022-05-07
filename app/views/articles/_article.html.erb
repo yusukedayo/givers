@@ -14,9 +14,9 @@
           </div>
           <div class="position-absolute.end-0">
             <% if current_user.own?(article) %>
-              <%= render 'crud_menus', article: article %>
+              <%= render 'articles/crud_menus', article: article %>
             <% else %>
-              <%= render 'like_area', article: article  %>
+              <%= render 'articles/like_area', article: article  %>
             <% end %>
           </div>
       </div>

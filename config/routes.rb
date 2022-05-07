@@ -12,5 +12,12 @@ Rails.application.routes.draw do
     end
   end
   resources :likes, only: %i[create destroy]
+  resources :topics, only: %i[index] do
+    collection do
+      get :introduction
+      get :basis
+      get :advance
+    end
+  end
   resource :profile, only: %i[show edit update]
 end
