@@ -4,43 +4,36 @@
       <ul class="navbar-nav mx-auto border-bottom border-dark border-2">
         <li class="nav-item <%= active?('articles','index') %>">
           <%= link_to 'ホーム', articles_path, class: 'nav-link aria-current="page" active' %>
-          </a>
         </li>
         <li class="nav-item <%= active?('topics','introduction') %>">
           <%= link_to '入門STEP', introduction_topics_path, class: 'nav-link aria-current="page" active' %>
-          </a>
         </li>
         <li class="nav-item <%= active?('topics','basis') %>">
           <%= link_to '基礎STEP', basis_topics_path, class: 'nav-link aria-current="page" active' %>
-          </a>
         </li>
         <li class="nav-item <%= active?('topics','advance') %>">
           <%= link_to '応用STEP', advance_topics_path, class: 'nav-link aria-current="page" active' %>
-          </a>
         </li>
-        <li class="nav-item <%= active?('topics','introduction') %>">
-          <%= link_to 'エラー', advance_topics_path, class: 'nav-link aria-current="page" active' %>
-          </a>
+        <li class="nav-item <%= active?('topics','error') %>">
+          <%= link_to 'エラー', error_topics_path, class: 'nav-link aria-current="page" active' %>
         </li>
-        <li class="nav-item <%= active?('topics','introduction') %>">
-          <%= link_to '機能', advance_topics_path, class: 'nav-link aria-current="page" active' %>
-          </a>
+        <li class="nav-item <%= active?('topics','function') %>">
+          <%= link_to '機能', function_topics_path, class: 'nav-link aria-current="page" active' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'デザイン', advance_topics_path, class: 'nav-link aria-current="page" active' %>
-          </a>
+        <li class="nav-item <%= active?('topics','design') %>">
+          <%= link_to 'デザイン', design_topics_path, class: 'nav-link aria-current="page" active' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Rails', advance_topics_path, class: 'nav-link aria-current="page" active' %>
-          </a>
+        <li class="nav-item <%= active?('topics','rails') %>">
+          <%= link_to 'Rails', rails_topics_path, class: 'nav-link aria-current="page" active' %>
         </li>
-        <li class="nav-item">
-          <%= link_to '学習方法', advance_topics_path, class: 'nav-link aria-current="page" active' %>
-          </a>
+        <li class="nav-item <%= active?('topics','how_to_study') %>">
+          <%= link_to '学習方法', how_to_study_topics_path, class: 'nav-link aria-current="page" active' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'ライフハック', advance_topics_path, class: 'nav-link aria-current="page" active' %>
-          </a>
+        <li class="nav-item <%= active?('topics','life_hack') %>">
+          <%= link_to 'ライフハック', life_hack_topics_path, class: 'nav-link aria-current="page" active' %>
+        </li>
+        <li class="nav-item <%= active?('topics','event') %>">
+          <%= link_to 'イベント', event_topics_path, class: 'nav-link aria-current="page" active' %>
         </li>
       </ul>
     </div>

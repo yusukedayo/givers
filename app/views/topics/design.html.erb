@@ -1,0 +1,18 @@
+<div class="container pt-3">
+  <%= render 'articles/topics_navar' %>
+  <!-- 掲示板一覧 -->
+  <div class="d-flex align-items-end" >
+    <div class="w-25 "><h4 class="fw-bolder">全て</h4></div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12">
+      <div class="row">
+        <% if @design_articles.present? %>
+          <%= render partial: 'articles/article', collection: @design_articles %>
+        <% else %>
+          <p><%= t('.no_result') %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
