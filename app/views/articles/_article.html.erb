@@ -1,34 +1,26 @@
-<div class="container col-8">
-
-  <div class="card mb-3">
-    <div class="card-body">
-      <div class="d-flex bd-highlight ">
-            <div class="p-2 bd-highlight"><%= image_tag article.user.avatar.url , class:"rounded-circle", alt:"mdo", width:"32", height:"32"%></div>
-            <div class="p-2 bd-highlight"><%= article.user.user_name%></div>
-            <div class="ms-auto p-2 bd-highlight">
-                <%= link_to article.url do%>
-                  <i class="fas fa-link"></i>記事に移動
-                <% end %>
-              </div>
-            <div class="p-2 bd-highlight"><%= article.status %></div>
-            </div>
-            <h5 class="d-flex bd-highlight ">
-              <div class="p-2 bd-highligh"><%= link_to article.title, article_path(article), style:"text-decoration: none" %></div>
-            </h5>
-                  <div class="d-flex bd-highlight">
-            <div class="pr-4 bd-highlight "><%= render 'tag_list', tag_list: article.tag_list %></div>
-            <div class="ms-auto  bd-highlight">
-              <% if current_user.own?(article) %>
-                <%= render 'crud_menus', article: article %>
-              <% else %>
-                <%= render 'like_area', article: article  %>
-              <% end %>
-            </div>
+<div class="col-sm-12 col-lg-3 mb-3">
+  <div id="article-id-<%= article.id %>">
+    <div class="card">
+      <img src="https://newsatcl-pctr.c.yimg.jp/r/iwiz-amd/20220221-00010005-huffpost-000-3-view.jpg?exp=10800" class="card-img-top" alt="..."  width="290", height="150">
+      <div class="card-body pb-1 pr-1">
+        <h4 class="card-title">
+          <%= link_to article.title.truncate(26), article_path(article) %>
+        </h4>
+      </div>
+        <div class="d-flex mb-1 position-relative">
+          <div class="align-items-start">
+            <%= image_tag article.user.avatar.url , class:"rounded-circle", alt:"mdo", width:"32", height:"32"%>
+            <%= article.user.user_name.truncate(18)%>
           </div>
+          <div class="position-absolute.end-0">
+            <% if current_user.own?(article) %>
+              <%= render 'articles/crud_menus', article: article %>
+            <% else %>
+              <%= render 'articles/like_area', article: article  %>
+            <% end %>
+          </div>
+      </div>
     </div>
   </div>
 </div>
 
-
-
-  
