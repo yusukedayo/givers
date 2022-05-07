@@ -17,6 +17,13 @@ Rails.application.routes.draw do
       get :introduction
       get :basis
       get :advance
+      get :error
+      get :function
+      get :design
+      get :rails
+      get :how_to_study
+      get :life_hack
+      get :event
     end
   end
   resource :profile, only: %i[show edit update]

@@ -1,5 +1,5 @@
 <% if current_user.own?(article) %>
-  <p class='crud-menu-btn'>
+  <p class='crud-menu-btn mb-0'>
       <%= link_to edit_article_path(article), id: "button-edit-#{article.id}" do %>
         <i class="far fa-edit"></i>
       <% end %>
