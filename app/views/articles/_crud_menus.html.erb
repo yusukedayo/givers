@@ -1,14 +1,10 @@
 <% if current_user.own?(article) %>
-  <ul class='crud-menu-btn list-inline float-right'>
-    <li class="list-inline-item">
+  <p class='crud-menu-btn'>
       <%= link_to edit_article_path(article), id: "button-edit-#{article.id}" do %>
         <i class="far fa-edit"></i>
       <% end %>
-    </li>
-    <li class="list-inline-item">
       <%= link_to article_path(article), method: :delete, data: { confirm: '本当に削除しますか？' }, id: "button-delete-#{article.id}" do %>
         <i class="far fa-trash-alt"></i>
       <% end %>
-    </li>
-  </ul>
+  </p>
 <% end %>

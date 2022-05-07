@@ -1,37 +1,54 @@
 <div class="container pt-3">
+  <!-- 掲示板一覧 -->
+  <h2 class="header-tag my-1 bg-primary text-white  col-2 text-center">全て</h2>
   <div class="row">
-    <div class="col-lg-10 offset-lg-1">
-      <h2 class="header-tag mt-3 bg-primary text-white col-2 text-center">全て</h2>
-    </div>
-    <% if @articles.present? %>
-      <%= render @articles %>
-    <% else %>
-      <p>投稿はありません</p>
-    <% end %>
-    <div class="col-lg-10 offset-lg-1">
-    <h2 class="header-tag my-1 bg-primary text-white col-2 text-center">入門STEP</h2>
-    </div>
-    <% if @introduction_articles.present? %>
-      <%= render @introduction_articles %>
+    <div class="col-12">
+      <div class="row">
+        <% if @articles.present? %>
+          <%= render @articles %>
         <% else %>
-          <p>投稿はありません</p>
+          <p><%= t('.no_result') %></p>
         <% end %>
-    <div class="col-lg-10 offset-lg-1">
-    <h2 class="header-tag my-1 bg-primary text-white col-2 text-center">基礎STEP</h2>
+      </div>
     </div>
-    <% if @basis_articles.present? %>
-      <%= render @basis_articles %>
-    <% else %>
-      <p>投稿はありません</p>
-    <% end %>
-    <div class="col-lg-10 offset-lg-1">
-    <h2 class="header-tag my-1 bg-primary text-white col-2 text-center">応用</h2>
-    </div>
-    <% if @advance_articles.present? %>
-      <%= render @advance_articles %>
-    <% else %>
-      <p>投稿はありません</p>
-    <% end %>
   </div>
 
+  <h2 class="header-tag my-1 bg-primary text-white col-2 text-center">入門STEP</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @introduction_articles.present? %>
+          <%= render @introduction_articles %>
+        <% else %>
+          <p><%= t('.no_result') %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
+  <h2 class="header-tag my-1 bg-primary text-white col-2 text-center">基礎STEP</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @basis_articles.present? %>
+          <%= render @basis_articles %>
+        <% else %>
+          <p><%= t('.no_result') %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="header-tag my-1 bg-primary text-white col-2 text-center">応用STEP</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @advance_articles.present? %>
+          <%= render @advance_articles %>
+        <% else %>
+          <p><%= t('.no_result') %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
