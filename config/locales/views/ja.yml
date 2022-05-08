@@ -1,0 +1,8 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+  articles:
+    new:
+      tag_list: 'タグ'

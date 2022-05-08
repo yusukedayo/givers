@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      article: '記事'
+    attributes:
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        user_name: 'ユーザー名'
+      article:
+        title: 'タイトル'
+        body: '本文'
+        url: '記事へのURL'
+        status: '閲覧条件'
+  enums:
+    article:
+      status:
+        everytime: 'いつでも閲覧OK'
+        after_study: '課題のネタバレ注意'
