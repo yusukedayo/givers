@@ -72,3 +72,6 @@ gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
 gem 'rails_12factor', group: :production
+
+gem 'rails-i18n'
+gem 'enum_help'
