@@ -1,11 +1,16 @@
 <div class="container pt-3">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h1 class="float-left mb-5">プロフィール編集</h1>
-      <%= link_to '編集', edit_profile_path, class: 'btn btn-success float-right' %>
+      <h3 class="float-left mb-5">プロフィール編集</h3>
       <table class="table">
         <tr>
-          <%= image_tag current_user.avatar.url, class:"rounded-circle", alt:"mdo", width:"60", height:"60" %>
+          <div class="d-flex align-items-end" >
+              <div class="w-25 ">
+                <%= image_tag current_user.avatar.url , class:"rounded-circle", alt:"mdo", width:"50", height:"50"%>
+              </div>
+              <div class="ms-auto align-items-end">
+                <%= link_to '編集', edit_profile_path, class: 'btn btn-success float-right' %>
+              </div>
         </tr>
         <tr>
           <th scope="row">メールアドレス</th>
@@ -18,11 +23,14 @@
       </table>
     </div>
   </div>
-  <div class="row">
+    <div class="d-flex align-items-end" >
+    <div class="w-25"><h4 class="fw-bolder">自分の投稿</h4></div>
+  </div>
+  <div class="row pt-3">
     <div class="col-12">
       <div class="row">
         <% if @own_articles.present? %>
-          <%= render partial: 'own_article', collection: @own_articles %>
+          <%= render partial: 'articles/article', collection: @own_articles %>
         <% else %>
           <p>投稿はありません</p>
         <% end %>
