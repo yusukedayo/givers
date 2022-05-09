@@ -1,4 +1,4 @@
-<% if current_user.like?(article) %>
+<% if current_user&.like?(article) %>
   <%= render 'articles/unlike', { article: article } %><%= article.likes.count %>
 <% else %>
   <%= render 'articles/like', { article: article } %><%= article.likes.count %>

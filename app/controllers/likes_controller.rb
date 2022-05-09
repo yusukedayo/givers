@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :require_login, only: %i[create destroy]
   def create
     @article = Article.find(params[:article_id])
     current_user.like(@article)
