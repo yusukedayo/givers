@@ -13,7 +13,7 @@
             <%= article.user.user_name.truncate(18)%>
           </div>
           <div class="ms-auto">
-            <% if current_user.own?(article) %>
+            <% if current_user&.own?(article) %>
               <%= render 'articles/crud_menus', article: article %>
             <% else %>
               <%= render 'articles/like_area', article: article  %>
