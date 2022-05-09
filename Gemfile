@@ -76,3 +76,4 @@ gem 'rails_12factor', group: :production
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'kaminari'
+gem 'roo'
