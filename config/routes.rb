@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     collection do
       get :likes
       get :search
+      post :import
     end
   end
   resources :likes, only: %i[create destroy]

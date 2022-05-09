@@ -22,3 +22,8 @@
   </div>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+
+<%= form_tag import_articles_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "インポート" %>
+<% end %>
