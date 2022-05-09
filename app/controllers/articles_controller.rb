@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
 
   def search
     @q = Article.ransack(params[:q])
-    @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+    @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
     if params[:tag_name]
       @articles = Article.tagged_with("#{params[:tag_name]}")
     end
