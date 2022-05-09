@@ -58,6 +58,11 @@ class ArticlesController < ApplicationController
     @like_articles = current_user.like_articles.includes(:user).order(created_at: :desc)
   end
 
+  def import
+    Article.import(params[:file])
+    redirect_to articles_path
+  end
+
   private
 
   def article_params
