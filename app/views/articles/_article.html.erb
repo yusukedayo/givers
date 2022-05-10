@@ -2,7 +2,7 @@
   <div id="article-id-<%= article.id %>">
     <div class="card">
     
-      <%= image_tag "#{rundum_image}", class: "card-img-top",  width:"290", height:"150"%>
+      <%= image_tag "#{status_image(article)}", class: "card-img-top",  width:"290", height:"150"%>
 
       <div class="card-body pb-1 pr-1">
         <h4 class="card-title">
@@ -19,9 +19,6 @@
               <%= render 'articles/crud_menus', article: article %>
             <% else %>
               <%= render 'articles/like_area', article: article  %>
-              <%= link_to edit_article_path(article), id: "button-edit-#{article.id}" do %>
-               <i class="far fa-edit"></i>
-              <% end %>
             <% end %>
           </div>
       </div>
