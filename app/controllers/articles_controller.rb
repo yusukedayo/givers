@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy show]
-  before_action :set_article, only: %i[edit update destroy]
+  before_action :set_article, only: %i[destroy]
   def index
     @articles = Article.all.includes(:user).order(created_at: :desc).limit(4)
     @introduction_articles = Article.tagged_with(["入門編", "入門"], :any => true).includes(:user).limit(4).order(created_at: :desc)
@@ -26,9 +26,12 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def edit; end
+  def edit
+    @article = Article.find(params[:id])
+  end
 
   def update
+    @article = Article.find(params[:id])
     if @article.update(article_params)
       redirect_to article_path(@article), success: '投稿を更新しました'
     else

@@ -19,6 +19,9 @@
               <%= render 'articles/crud_menus', article: article %>
             <% else %>
               <%= render 'articles/like_area', article: article  %>
+              <%= link_to edit_article_path(article), id: "button-edit-#{article.id}" do %>
+               <i class="far fa-edit"></i>
+              <% end %>
             <% end %>
           </div>
       </div>
