@@ -5,9 +5,9 @@ module ApplicationHelper
 
   def status_image(object)
     if object.status == "everytime"
-      'nisekai.jpg'
+      'resize.png'
     else
-      'netabare.jpg'
+      'resizerunte.png'
     end
   end
 end
