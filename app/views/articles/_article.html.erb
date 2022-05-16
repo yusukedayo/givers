@@ -22,6 +22,14 @@
             <% end %>
           </div>
       </div>
+      <div class="d-flex mb-1 ">
+          <div class="align-items-start mx-3">
+            <%= article.created_at %>
+          </div>
+          <div class="ms-auto">
+            <%= link_to 'notionに移動', article.url %>
+          </div>
+      </div>
     </div>
   </div>
 </div>
