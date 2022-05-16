@@ -6,3 +6,6 @@ ja:
   articles:
     new:
       tag_list: 'タグ'
+  time:
+    formats:
+      default: "%Y/%m/%d"
