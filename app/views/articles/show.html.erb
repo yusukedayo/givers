@@ -20,7 +20,7 @@
                     <% end %>
                   </div>
                   <div class=" bd-highlight">
-                    <% if current_user.own?(@article) %>
+                    <% if current_user&.own?(@article) %>
                      <%= render 'crud_menus', article: @article %>
                     <% else %>
                       <%= render 'like_area', article: @article  %>
