@@ -8,8 +8,8 @@ jobs:
     docker:
       - image: cimg/ruby:3.1.2-node
         auth:
-          username: givers
-          password: trust
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
@@ -19,8 +19,8 @@ jobs:
 
       - image: cimg/postgres:14.0
         auth:
-          username: givers
-          password: trust
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
         environment:
           POSTGRES_USER: testuser
           POSTGRES_DB: givers_test
