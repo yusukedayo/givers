@@ -1,62 +1,67 @@
 version: 2
 jobs:
   build:
+    docker:
+    - image: cimg/ruby:3.1.2-node-browsers
+      environment:
+        - BUNDLER_VERSION: 2.0.2
+        - RAILS_ENV: 'test'
+    - image: postgres:11.6-alpine
+      environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: givers_test
+          POSTGRES_PASSWORD: ""
+
     working_directory: ~/givers
 
-    # Primary container image where all commands run
-
-    docker:
-      - image: cimg/ruby:3.1.2-node
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          RAILS_ENV: test
-          PGHOST: 127.0.0.1
-          PGUSER: givers
-
-    # Service container image available at `host: localhost`
-
-      - image: cimg/postgres:14.0
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          POSTGRES_USER: testuser
-          POSTGRES_DB: givers_test
 
     steps:
-      - checkout
+    - checkout
 
-      # Restore bundle cache
-      - restore_cache:
-          keys:
-            - rails-demo-{{ checksum "Gemfile.lock" }}
-            - rails-demo-
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "Gemfile.lock" }}
+        - v1-dependencies-
 
-      # Bundle install dependencies
-      - run:
-          name: Install dependencies
-          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+    - run:
+        name: install dependencies
+        command: |
+          gem install bundler -v 2.0.2
+          bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-      - run: sudo apt install -y postgresql-client || true
+    - save_cache:
+        paths:
+        - ./vendor/bundle
+        key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      # Store bundle cache
-      - save_cache:
-          key: rails-demo-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
 
-      - run:
-          name: Database Setup
-          command: |
-            bundle exec rake db:create
-            bundle exec rake db:structure:load
+    - run: mv ./config/database.yml.ci ./config/database.yml
 
-      - run:
-          name: Parallel RSpec
-          command: bin/rails test
 
-      # Save artifacts
-      - store_test_results:
-          path: /tmp/test-results
+    - run:
+        name: Databasesetup
+        command: |
+          bundle exec rake db:create
+          bundle exec rake db:schema:load
+
+
+    - run:
+        name: Run rspec
+        command: |
+          mkdir /tmp/test-results
+          TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+            circleci tests split --split-by=timings)"
+
+          bundle exec rspec \
+            --format progress \
+            --format RspecJunitFormatter \
+            --out /tmp/test-results/rspec.xml \
+            --format progress \
+            $TEST_FILES
+
+    # collect reports
+    - store_test_results:
+        path: /tmp/test-results
+    - store_artifacts:
+        path: /tmp/test-results
+        destination: test-results
