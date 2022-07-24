@@ -77,3 +77,7 @@ gem 'rails-i18n'
 gem 'enum_help'
 gem 'kaminari'
 gem 'roo'
+
+group :development, :test do
+  gem 'rspec-rails' # 追加
+end
