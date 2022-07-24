@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: givers_development
-  username: root
+  username: givers
   password: <%= ENV['GIVERS_DATABASE_PASSWORD'] %>
   adapter: postgresql
   encoding: unicode
@@ -63,7 +63,7 @@ development:
 test:
   <<: *default
   database: givers_test
-  username: root
+  username: givers
   password: <%= ENV['GIVERS_DATABASE_PASSWORD'] %>
   adapter: postgresql
   encoding: unicode
