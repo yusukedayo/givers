@@ -27,14 +27,14 @@ jobs:
         name: "db"
         environment:
           POSTGRES_USER: postgres
-          POSTGRES_DB: myapp_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_DB: givers_test
+          POSTGRES_PASSWORD: trust
     environment:
       BUNDLE_JOBS: "4"
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
       PGUSER: postgres
-      PGPASSWORD: ""
+      PGPASSWORD: trust
       RAILS_ENV: test
     steps:
       - setup
