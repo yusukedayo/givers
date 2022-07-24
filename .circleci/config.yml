@@ -1,67 +1,57 @@
-version: 2
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.1.0
+  node: circleci/node@2
+
 jobs:
   build:
     docker:
-    - image: cimg/ruby:3.1.2-node-browsers
-      environment:
-        - BUNDLER_VERSION: 2.0.2
-        - RAILS_ENV: 'test'
-    - image: postgres:11.6-alpine
-      environment:
-          POSTGRES_USER: postgres
+      - image: cimg/ruby:3.1.2-node
+    steps:
+      - checkout
+      - ruby/install-deps
+      # Store bundle cache
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+  test:
+    parallelism: 3
+    docker:
+      - image: cimg/ruby:3.1.2-node
+      - image: circleci/postgres:9.5-alpine
+        environment:
+          POSTGRES_USER: circleci-demo-ruby
           POSTGRES_DB: givers_test
           POSTGRES_PASSWORD: ""
-
-    working_directory: ~/givers
-
-
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: circleci-demo-ruby
+      PGPASSWORD: ""
+      RAILS_ENV: test
     steps:
-    - checkout
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      # Run rspec in parallel
+      - ruby/rspec-test
+      - ruby/rubocop-check
 
-    - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "Gemfile.lock" }}
-        - v1-dependencies-
-
-    - run:
-        name: install dependencies
-        command: |
-          gem install bundler -v 2.0.2
-          bundle install --jobs=4 --retry=3 --path vendor/bundle
-
-    - save_cache:
-        paths:
-        - ./vendor/bundle
-        key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
-
-    - run: mv ./config/database.yml.ci ./config/database.yml
-
-
-    - run:
-        name: Databasesetup
-        command: |
-          bundle exec rake db:create
-          bundle exec rake db:schema:load
-
-
-    - run:
-        name: Run rspec
-        command: |
-          mkdir /tmp/test-results
-          TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-            circleci tests split --split-by=timings)"
-
-          bundle exec rspec \
-            --format progress \
-            --format RspecJunitFormatter \
-            --out /tmp/test-results/rspec.xml \
-            --format progress \
-            $TEST_FILES
-
-    # collect reports
-    - store_test_results:
-        path: /tmp/test-results
-    - store_artifacts:
-        path: /tmp/test-results
-        destination: test-results
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
