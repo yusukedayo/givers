@@ -8,19 +8,19 @@ jobs:
     docker:
       - image: cimg/ruby:3.1.2-node
         auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          username: givers
+          password: trust
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
-          PGUSER: root
+          PGUSER: givers
 
     # Service container image available at `host: localhost`
 
       - image: cimg/postgres:14.0
         auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          username: givers
+          password: trust
         environment:
           POSTGRES_USER: testuser
           POSTGRES_DB: givers_test
